@@ -4,7 +4,8 @@ module.exports = {
 	title: pkg.name,
 	description: pkg.description,
 	nav: {
-		Source: 'https://github.com/gabrielcsapo/css-commons'
+		Source: 'https://github.com/gabrielcsapo/css-commons',
+		Docs: './code/index.html'
 	},
 	body: [{
 		type: 'text',
