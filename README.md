@@ -103,10 +103,6 @@ var output = commons(css);
   color: #fff;
 }
 
-.badge.badge-white, .badge.border-white, .badge.border-black {
-  color: #000;
-}
-
 .alert.alert-default {
   background-color: #cfcfc4;
   border: 1px solid #bdbdae;
@@ -114,6 +110,10 @@ var output = commons(css);
 
 .badge.badge-white {
   background-color: #fff;
+}
+
+.badge.badge-white, .badge.border-white, .badge.border-black {
+  color: #000;
 }
 
 .badge.badge-black {

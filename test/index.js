@@ -3,7 +3,7 @@ const test = require('tape');
 const commons = require('../');
 
 test('css-commons', (t) => {
-	t.plan(1);
+	t.plan(2);
 
 	t.test('should be able to combine children', (t) => {
 		var css = `
@@ -72,10 +72,7 @@ test('css-commons', (t) => {
   }
 }
 .alert.alert-black *,.alert.alert-default *,.badge.badge-black {
-  color:#fff;
-}
-.badge.badge-white,.badge.border-white,.badge.border-black {
-  color:#000;
+  color:#fff;
 }
 .alert.alert-default {
   background-color:#cfcfc4;
@@ -83,6 +80,9 @@ test('css-commons', (t) => {
 }
 .badge.badge-white {
   background-color:#fff;
+}
+.badge.badge-white,.badge.border-white,.badge.border-black {
+  color:#000;
 }
 .badge.badge-black {
   background-color:#000;
@@ -107,6 +107,26 @@ pre {
 `);
 		t.equal(output.length, 847);
 		t.equal(css.length, 1206);
+		t.end();
+	});
+
+	t.test('shouldn\'t break up already existing optimizations', (t) => {
+		const css = `
+			.tooltip:before,
+			[data-tooltip]:before {
+			  z-index: 1001;
+			  border: 6px solid transparent;
+			  background: transparent;
+			  content: '';
+			}
+		`;
+		t.equal(commons(css), `.tooltip:before,[data-tooltip]:before {
+  z-index:1001;
+  border:6px solid transparent;
+  background:transparent;
+  content:'';
+}
+`);
 		t.end();
 	});
 

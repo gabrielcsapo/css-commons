@@ -4698,7 +4698,7 @@ module.exports = (original) => {
 	const obj = css.parse(original, {});
 
 	let declartions = {};
-	let single = {};
+	let pass = {};
 	let output = '';
 
 	obj.stylesheet.rules.forEach((rule) => {
@@ -4724,22 +4724,26 @@ module.exports = (original) => {
 	Object.keys(declartions).forEach((s) => {
 		// if there is only one child, stack these for later
 		if(declartions[s].length === 1) {
-			if(single[declartions[s][0]]) {
-				single[declartions[s][0]].push(s);
+			if(pass[declartions[s][0]]) {
+				pass[declartions[s][0]].push(s);
 			} else {
-				single[declartions[s][0]] = [s];
+				pass[declartions[s][0]] = [s];
 			}
 		} else {
-			output += dedent(`${declartions[s].join(',')} {
-        ${s};
-      }`) + '\n';
+			// optimize by doing a second pass and collating selectors
+			const key = `${declartions[s].join(',')}`;
+			if(pass[key]) {
+				pass[key] = pass[key].concat([s]);
+			} else {
+				pass[key] = [s];
+			}
 		}
 	});
 
-	// now output the single values
-	Object.keys(single).forEach((s) => {
+	// now output the final value
+	Object.keys(pass).forEach((s) => {
 		output += dedent(`${s} {
-\u00A0\u00A0${single[s].join(';\n\u00A0\u00A0')};
+\u00A0\u00A0${pass[s].join(';\n\u00A0\u00A0')};
 }`) + '\n';
 	});
 
