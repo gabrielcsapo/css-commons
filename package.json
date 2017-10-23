@@ -1,6 +1,6 @@
 {
   "name": "css-commons",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "👨‍👨‍👧‍👧 let's make our css a family again",
   "main": "index.js",
   "author": "Gabriel J. Csapo",
@@ -19,6 +19,9 @@
     "coverage": "tap test --coverage --coverage-report=lcov",
     "build": "browserify -r ./index.js:css-commons -t [ babelify --presets [ env ]] > dist/css-commons.js && minify dist/css-commons.js --out-file dist/css-commons.min.js",
     "generate-docs": "tryitout && jsdoc --configure .jsdoc.json --verbose"
+  },
+  "bin": {
+    "css-commons": "./bin/index.js"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
