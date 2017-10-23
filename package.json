@@ -1,0 +1,41 @@
+{
+  "name": "css-commons",
+  "version": "0.0.1",
+  "description": "👨‍👨‍👧‍👧 let's make our css a family again",
+  "main": "index.js",
+  "author": "Gabriel J. Csapo",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabrielcsapo/css-commons.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gabrielcsapo/css-commons/issues"
+  },
+  "homepage": "https://github.com/gabrielcsapo/css-commons#readme",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "tape test",
+    "coverage": "tap test --coverage --coverage-report=lcov",
+    "build": "browserify -r ./index.js:css-commons -t [ babelify --presets [ env ]] > dist/css-commons.js && minify dist/css-commons.js --out-file dist/css-commons.min.js",
+    "generate-docs": "tryitout && jsdoc --configure .jsdoc.json --verbose"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-minify": "^0.2.0",
+    "babel-preset-env": "^1.6.1",
+    "babelify": "^7.3.0",
+    "babili": "^0.1.4",
+    "browserify": "^14.5.0",
+    "eslint": "^4.9.0",
+    "jsdoc": "^3.5.5",
+    "tap": "^10.7.2",
+    "tape": "^4.8.0",
+    "tryitout": "^0.3.5",
+    "uglify-js": "^3.1.5"
+  },
+  "dependencies": {
+    "css": "^2.2.1",
+    "dedent": "^0.7.0"
+  }
+}
