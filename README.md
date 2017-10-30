@@ -1,5 +1,13 @@
 # css-commons
 
+[![Build Status](https://travis-ci.org/gabrielcsapo/css-commons.svg?branch=master)](https://travis-ci.org/gabrielcsapo/css-commons)
+[![Dependency Status](https://starbuck.gabrielcsapo.com/badge/github/gabrielcsapo/css-commons/status.svg)](https://starbuck.gabrielcsapo.com/github/gabrielcsapo/css-commons)
+[![devDependency Status](https://starbuck.gabrielcsapo.com/badge/github/gabrielcsapo/css-commons/dev-status.svg)](https://starbuck.gabrielcsapo.com/github/gabrielcsapo/css-commons#info=devDependencies)
+[![Coverage Status](https://lcov-server.gabrielcsapo.com/badge/github%2Ecom/gabrielcsapo/css-commons.svg)](https://lcov-server.gabrielcsapo.com/coverage/github%2Ecom/gabrielcsapo/css-commons)
+[![npm](https://img.shields.io/npm/dt/css-commons.svg?maxAge=2592000)]()
+[![npm](https://img.shields.io/npm/dm/css-commons.svg?maxAge=2592000)]()
+
+
 > 👨‍👨‍👧‍👧 let's make our css a family again
 
 `css-commons` aims to reduce the number of orphaned selectors that only contain one rule that is similar to other selectors rules.

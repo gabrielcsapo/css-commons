@@ -25,17 +25,18 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
     "babel-minify": "^0.2.0",
     "babel-preset-env": "^1.6.1",
-    "babelify": "^7.3.0",
+    "babelify": "^8.0.0",
     "babili": "^0.1.4",
     "browserify": "^14.5.0",
-    "eslint": "^4.9.0",
+    "eslint": "^4.10.0",
     "jsdoc": "^3.5.5",
     "tap": "^10.7.2",
     "tape": "^4.8.0",
-    "tryitout": "^0.3.5",
-    "uglify-js": "^3.1.5"
+    "tryitout": "^0.3.8",
+    "uglify-js": "^3.1.6"
   },
   "dependencies": {
     "css": "^2.2.1",
