@@ -31,7 +31,7 @@ npm install css-commons -g
 > `css-commons` is a commonjs module and can be placed as a script inside a page using `./dist/css-commons.js` (132k) or `./dist/css-commons.min.js` (42k)
 
 ```
-cat main.css > css-commons > main.min.css
+cat main.css | css-commons > main.min.css
 ```
 
 ```js
