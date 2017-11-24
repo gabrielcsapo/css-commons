@@ -303,7 +303,7 @@ function amdefine(module, requireFn) {
 module.exports = amdefine;
 
 }).call(this,require('_process'),"/node_modules/amdefine/amdefine.js")
-},{"_process":23,"path":22}],2:[function(require,module,exports){
+},{"_process":22,"path":21}],2:[function(require,module,exports){
 
 },{}],3:[function(require,module,exports){
 exports.parse = require('./lib/parse');
@@ -1166,7 +1166,7 @@ Compiler.prototype.declaration = function(node){
 };
 
 
-},{"./compiler":5,"inherits":21}],7:[function(require,module,exports){
+},{"./compiler":5,"inherits":20}],7:[function(require,module,exports){
 
 /**
  * Module dependencies.
@@ -1422,7 +1422,7 @@ Compiler.prototype.indent = function(level) {
   return Array(this.level).join(this.indentation || '  ');
 };
 
-},{"./compiler":5,"inherits":21}],8:[function(require,module,exports){
+},{"./compiler":5,"inherits":20}],8:[function(require,module,exports){
 
 /**
  * Module dependencies.
@@ -1599,7 +1599,7 @@ exports.comment = function(node) {
     return this._comment(node);
 };
 
-},{"fs":2,"path":22,"source-map":10,"source-map-resolve":25,"urix":27}],10:[function(require,module,exports){
+},{"fs":2,"path":21,"source-map":10,"source-map-resolve":24,"urix":26}],10:[function(require,module,exports){
 /*
  * Copyright 2009-2011 Mozilla Foundation and contributors
  * Licensed under the New BSD license. See LICENSE.txt or:
@@ -3783,67 +3783,6 @@ define(function (require, exports, module) {
 });
 
 },{"amdefine":1}],20:[function(require,module,exports){
-"use strict";
-
-function dedent(strings) {
-
-  var raw = void 0;
-  if (typeof strings === "string") {
-    // dedent can be used as a plain function
-    raw = [strings];
-  } else {
-    raw = strings.raw;
-  }
-
-  // first, perform interpolation
-  var result = "";
-  for (var i = 0; i < raw.length; i++) {
-    result += raw[i].
-    // join lines when there is a suppressed newline
-    replace(/\\\n[ \t]*/g, "").
-
-    // handle escaped backticks
-    replace(/\\`/g, "`");
-
-    if (i < (arguments.length <= 1 ? 0 : arguments.length - 1)) {
-      result += arguments.length <= i + 1 ? undefined : arguments[i + 1];
-    }
-  }
-
-  // now strip indentation
-  var lines = result.split("\n");
-  var mindent = null;
-  lines.forEach(function (l) {
-    var m = l.match(/^(\s+)\S+/);
-    if (m) {
-      var indent = m[1].length;
-      if (!mindent) {
-        // this is the first indented line
-        mindent = indent;
-      } else {
-        mindent = Math.min(mindent, indent);
-      }
-    }
-  });
-
-  if (mindent !== null) {
-    result = lines.map(function (l) {
-      return l[0] === " " ? l.slice(mindent) : l;
-    }).join("\n");
-  }
-
-  // dedent eats leading and trailing whitespace too
-  result = result.trim();
-
-  // handle escaped newlines at the end to ensure they don't get stripped too
-  return result.replace(/\\n/g, "\n");
-}
-
-if (typeof module !== "undefined") {
-  module.exports = dedent;
-}
-
-},{}],21:[function(require,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -3868,7 +3807,7 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],22:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 (function (process){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -4096,7 +4035,7 @@ var substr = 'ab'.substr(-1) === 'b'
 ;
 
 }).call(this,require('_process'))
-},{"_process":23}],23:[function(require,module,exports){
+},{"_process":22}],22:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -4282,7 +4221,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],24:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 // Copyright 2014 Simon Lydell
 // X11 (“MIT”) Licensed. (See LICENSE.)
 
@@ -4331,7 +4270,7 @@ void (function(root, factory) {
 
 }));
 
-},{}],25:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 // Copyright 2014 Simon Lydell
 // X11 (“MIT”) Licensed. (See LICENSE.)
 
@@ -4556,7 +4495,7 @@ void (function(root, factory) {
 
 }));
 
-},{"resolve-url":24,"source-map-url":26}],26:[function(require,module,exports){
+},{"resolve-url":23,"source-map-url":25}],25:[function(require,module,exports){
 // Copyright 2014 Simon Lydell
 // X11 (“MIT”) Licensed. (See LICENSE.)
 
@@ -4615,7 +4554,7 @@ void (function(root, factory) {
 
 }));
 
-},{}],27:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 // Copyright 2014 Simon Lydell
 // X11 (“MIT”) Licensed. (See LICENSE.)
 
@@ -4634,11 +4573,10 @@ function urix(aPath) {
 
 module.exports = urix
 
-},{"path":22}],"css-commons":[function(require,module,exports){
+},{"path":21}],"css-commons":[function(require,module,exports){
 /** @module css-commons */
 
 const css = require('css');
-const dedent = require('dedent');
 
 /**
  * combines orphaned and similar selectors with others
@@ -4735,12 +4673,10 @@ module.exports = (original) => {
 
 	// now output the final value
 	Object.keys(pass).forEach((s) => {
-		output += dedent(`${s} {
-\u00A0\u00A0${pass[s].join(';\n\u00A0\u00A0')};
-}`) + '\n';
+		output += `${s} {\n\u00A0 ${pass[s].join(';\n\u00A0\u00A0')}; \n}` + '\n';
 	});
 
 	return output;
 };
 
-},{"css":3,"dedent":20}]},{},[]);
+},{"css":3}]},{},[]);

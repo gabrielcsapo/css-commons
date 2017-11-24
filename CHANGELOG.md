@@ -1,3 +1,8 @@
+# 0.0.4 (11/24/2017)
+
+- removes the need for the dedent module
+- updates dependencies
+
 # 0.0.3 (10/22/2017)
 
 - does two passes on the data to ensure optimizations are kept and created

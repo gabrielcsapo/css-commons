@@ -1,7 +1,6 @@
 /** @module css-commons */
 
 const css = require('css');
-const dedent = require('dedent');
 
 /**
  * combines orphaned and similar selectors with others
@@ -98,9 +97,7 @@ module.exports = (original) => {
 
 	// now output the final value
 	Object.keys(pass).forEach((s) => {
-		output += dedent(`${s} {
-\u00A0\u00A0${pass[s].join(';\n\u00A0\u00A0')};
-}`) + '\n';
+		output += `${s} {\n\u00A0 ${pass[s].join(';\n\u00A0\u00A0')}; \n}` + '\n';
 	});
 
 	return output;
